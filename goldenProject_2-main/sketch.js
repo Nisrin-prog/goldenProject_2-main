@@ -6,6 +6,8 @@ var gameState,PLAY,END
 var bg,boyImg,boyStd,boy
 var startingPointImg,floatingIsland1,floatingIsland2
 var float1,float2,float3,float4,startingPoint
+var i = 0
+var j = 0 
 
 function preload() {
   bg = loadImage("./Assets/bg.png");
@@ -50,7 +52,7 @@ function draw() {
   image(bg, width / 2, height / 2, width, height);
   if(gameState === PLAY){
     // Game Background
-   
+    playerControls()
     textSize(30);
     fill("black");
     text("Press Space To Jump", width / 2 - 100, height-50);
@@ -91,12 +93,27 @@ function collisionWithPoints() {
     if (keyDown("space")) {  
       boy.shoot();
     }
-    setInterval(function(){Matter.Body.setStatic(obstacle1.body,false)},500)
+    setInterval(function(){Matter.Body.setStatic(obstacle1.body,false)},3000)
     var bombcollision = Matter.SAT.collides(boy.body,obstacle1.body);
     if(bombcollision.collided){
       gameState = END
     }
   }
-
+  
     
+}
+function playerControls(){
+  var prev = boy.body.position.x
+
+
+  if(keyDown(RIGHT_ARROW)&& i<=2){
+    boy.body.position.x += 1
+    i++
+    j=0
+  }
+  if(keyDown(LEFT_ARROW)&& j<=2){
+    boy.body.position.x -= 1
+    j++
+    i=0
+  }
 }
