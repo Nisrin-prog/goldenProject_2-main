@@ -16,10 +16,10 @@ class Boy {
   
   shoot() {
    
-    var newAngle = 45 - 28;
-    newAngle = newAngle * (3.14 / 180);
-    var velocity = p5.Vector.fromAngle(newAngle);
-    velocity.mult(1.5);
+   // var newAngle = 45 - 28;
+    //newAngle = newAngle * (3.14 / 180);
+   // var velocity = p5.Vector.fromAngle(newAngle);
+    //velocity.mult(1.5);
     Matter.Body.setStatic(this.body, false);
     Matter.Body.setVelocity(this.body, {
       x: 6,
